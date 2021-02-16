@@ -20,12 +20,25 @@ block content
     i.glyphicon.glyphicon-plus
     span  Add transaction
 
-  each transaction in transactions
-    .media
-      a(href=`/transactions/${transaction.id}`)
-        .media-body
-          h4= transaction.title
-          p= transaction.author
+  center
+
+  br 
+  br
+  html(lang='en')
+  body
+    table.table.table-striped
+      tr
+        th To
+        th From
+        th Date
+        th Amount
+      each transaction in transactions
+        tr
+          td 
+            a(href=`/transactions/${transaction.id}`) #{transaction.title}
+          td= transaction.author
+          td= transaction.publishedDate
+          td= transaction.description
 
   if !transactions.length
     p No transactions found.
