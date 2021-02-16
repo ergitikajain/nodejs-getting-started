@@ -16,12 +16,12 @@
 const GOOGLE_CLOUD_PROJECT = process.env['GOOGLE_CLOUD_PROJECT'];
 const CLOUD_BUCKET = GOOGLE_CLOUD_PROJECT + '_bucket';
 
-// [START bookshelf_cloud_storage_client]
+// [START hubble_cloud_storage_client]
 const {Storage} = require('@google-cloud/storage');
 
 const storage = new Storage();
 const bucket = storage.bucket(CLOUD_BUCKET);
-// [END bookshelf_cloud_storage_client]
+// [END hubble_cloud_storage_client]
 
 // Returns the public, anonymously accessible URL to a given Cloud Storage
 // object.

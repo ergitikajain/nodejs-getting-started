@@ -13,13 +13,13 @@
 
 'use strict';
 
-// [START bookshelf_firestore_client]
+// [START hubble_firestore_client]
 const {Firestore} = require('@google-cloud/firestore');
 
 const db = new Firestore();
 const collection = 'Book';
 
-// [END bookshelf_firestore_client]
+// [END hubble_firestore_client]
 
 // Lists all books in the database sorted alphabetically by title.
 async function list(limit, token) {
@@ -69,7 +69,7 @@ async function create(data) {
   return await update(null, data);
 }
 
-// [START bookshelf_firestore_client_get_book]
+// [START hubble_firestore_client_get_book]
 async function read(id) {
   const doc = await db.collection(collection).doc(id).get();
 
@@ -78,7 +78,7 @@ async function read(id) {
   }
   return doc.data();
 }
-// [END bookshelf_firestore_client_get_book]
+// [END hubble_firestore_client_get_book]
 
 async function _delete(id) {
   await db.collection(collection).doc(id).delete();
