@@ -23,8 +23,6 @@ block content
   each transaction in transactions
     .media
       a(href=`/transactions/${transaction.id}`)
-        .media-left
-            img(src=transaction.imageUrl || "http://placekitten.com/g/128/192")
         .media-body
           h4= transaction.title
           p= transaction.author
