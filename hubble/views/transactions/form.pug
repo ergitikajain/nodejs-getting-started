@@ -17,15 +17,15 @@ block content
   h3 #{action} transaction
   form(method="POST", enctype="multipart/form-data")
     .form-group
-      label(for="title") Title
+      label(for="title") To
       input.form-control(type="text", name="title", id="title", value=transaction.title)
     .form-group
-      label(for="author") Author
+      label(for="author") From
       input.form-control(type="text", name="author", id="author", value=transaction.author)
     .form-group
-      label(for="publishedDate") Date Published
+      label(for="publishedDate") Date 
       input.form-control(type="text", name="publishedDate", id="publishedDate", value=transaction.publishedDate)
     .form-group
-      label(for="description") Description
+      label(for="description") Amount
       input.form-control(type="text", name="description", id="description", value=transaction.description)
     button.btn.btn-success(type="submit") Save
