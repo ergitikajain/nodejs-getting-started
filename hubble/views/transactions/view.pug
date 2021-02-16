@@ -14,23 +14,23 @@
 extends ../base.pug
 
 block content
-  h3 Book
+  h3 Transaction
     small
 
   .btn-group
-    a(href=`/transactions/${book.id}/edit`, class='btn btn-primary btn-sm')
+    a(href=`/transactions/${transaction.id}/edit`, class='btn btn-primary btn-sm')
       i.glyphicon.glyphicon-edit
-      span  Edit book
-    a(href=`/transactions/${book.id}/delete`, class='btn btn-danger btn-sm')
+      span  Edit transaction
+    a(href=`/transactions/${transaction.id}/delete`, class='btn btn-danger btn-sm')
       i.glyphicon.glyphicon-trash
-      span  Delete book
+      span  Delete transaction
 
   .media
     .media-left
-      img(src=book.imageUrl || "http://placekitten.com/g/128/192")
+      img(src=transaction.imageUrl || "http://placekitten.com/g/128/192")
     .media-body
-      h4= book.title
+      h4= transaction.title
         | &nbsp;
-        small= book.publishedDate
-      h5 By #{book.author||'unknown'}
-      p= book.description
+        small= transaction.publishedDate
+      h5 By #{transaction.author||'unknown'}
+      p= transaction.description

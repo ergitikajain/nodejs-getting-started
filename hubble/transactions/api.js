@@ -38,40 +38,40 @@ router.get('/', async (req, res) => {
 /**
  * POST /api/transactions
  *
- * Create a new book.
+ * Create a new transaction.
  */
 router.post('/', async (req, res) => {
-  const book = await db.create(req.body);
-  res.json(book);
+  const transaction = await db.create(req.body);
+  res.json(transaction);
 });
 
 /**
  * GET /api/transactions/:id
  *
- * Retrieve a book.
+ * Retrieve a transaction.
  */
-router.get('/:book', async (req, res) => {
-  const book = await db.read(req.params.book);
-  res.json(book);
+router.get('/:transaction', async (req, res) => {
+  const transaction = await db.read(req.params.transaction);
+  res.json(transaction);
 });
 
 /**
  * PUT /api/transactions/:id
  *
- * Update a book.
+ * Update a transaction.
  */
-router.put('/:book', async (req, res) => {
-  const book = await db.update(req.params.book, req.body);
-  res.json(book);
+router.put('/:transaction', async (req, res) => {
+  const transaction = await db.update(req.params.transaction, req.body);
+  res.json(transaction);
 });
 
 /**
  * DELETE /api/transactions/:id
  *
- * Delete a book.
+ * Delete a transaction.
  */
-router.delete('/:book', async (req, res) => {
-  await db.delete(req.params.book);
+router.delete('/:transaction', async (req, res) => {
+  await db.delete(req.params.transaction);
   res.status(200).send('OK');
 });
 

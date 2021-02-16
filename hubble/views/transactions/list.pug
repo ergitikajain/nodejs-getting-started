@@ -18,16 +18,16 @@ block content
 
   a(href="/transactions/add", class='btn btn-success btn-sm')
     i.glyphicon.glyphicon-plus
-    span  Add book
+    span  Add transaction
 
-  each book in transactions
+  each transaction in transactions
     .media
-      a(href=`/transactions/${book.id}`)
+      a(href=`/transactions/${transaction.id}`)
         .media-left
-            img(src=book.imageUrl || "http://placekitten.com/g/128/192")
+            img(src=transaction.imageUrl || "http://placekitten.com/g/128/192")
         .media-body
-          h4= book.title
-          p= book.author
+          h4= transaction.title
+          p= transaction.author
 
   if !transactions.length
     p No transactions found.

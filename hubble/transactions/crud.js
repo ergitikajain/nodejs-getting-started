@@ -45,11 +45,11 @@ router.get('/', async (req, res) => {
 /**
  * GET /transactions/add
  *
- * Display a form for creating a book.
+ * Display a form for creating a transaction.
  */
 router.get('/add', (req, res) => {
   res.render('transactions/form.pug', {
-    book: {},
+    transaction: {},
     action: 'Add',
   });
 });
@@ -57,7 +57,7 @@ router.get('/add', (req, res) => {
 /**
  * POST /transactions/add
  *
- * Create a book.
+ * Create a transaction.
  */
 // [START add]
 router.post(
@@ -83,12 +83,12 @@ router.post(
 /**
  * GET /transactions/:id/edit
  *
- * Display a book for editing.
+ * Display a transaction for editing.
  */
-router.get('/:book/edit', async (req, res) => {
-  const book = await db.read(req.params.book);
+router.get('/:transaction/edit', async (req, res) => {
+  const transaction = await db.read(req.params.transaction);
   res.render('transactions/form.pug', {
-    book,
+    transaction,
     action: 'Edit',
   });
 });
@@ -96,10 +96,10 @@ router.get('/:book/edit', async (req, res) => {
 /**
  * POST /transactions/:id/edit
  *
- * Update a book.
+ * Update a transaction.
  */
 router.post(
-  '/:book/edit',
+  '/:transaction/edit',
   images.multer.single('image'),
   images.sendUploadToGCS,
   async (req, res) => {
@@ -111,7 +111,7 @@ router.post(
       req.body.imageUrl = req.file.cloudStoragePublicUrl;
     }
 
-    const savedData = await db.update(req.params.book, data);
+    const savedData = await db.update(req.params.transaction, data);
     res.redirect(`${req.baseUrl}/${savedData.id}`);
   }
 );
@@ -119,22 +119,22 @@ router.post(
 /**
  * GET /transactions/:id
  *
- * Display a book.
+ * Display a transaction.
  */
-router.get('/:book', async (req, res) => {
-  const book = await db.read(req.params.book);
+router.get('/:transaction', async (req, res) => {
+  const transaction = await db.read(req.params.transaction);
   res.render('transactions/view.pug', {
-    book,
+    transaction,
   });
 });
 
 /**
  * GET /transactions/:id/delete
  *
- * Delete a book.
+ * Delete a transaction.
  */
-router.get('/:book/delete', async (req, res) => {
-  await db.delete(req.params.book);
+router.get('/:transaction/delete', async (req, res) => {
+  await db.delete(req.params.transaction);
   res.redirect(req.baseUrl);
 });
 

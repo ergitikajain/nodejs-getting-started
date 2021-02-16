@@ -17,7 +17,7 @@
 const {Firestore} = require('@google-cloud/firestore');
 
 const db = new Firestore();
-const collection = 'Book';
+const collection = 'Transaction';
 
 // [END hubble_firestore_client]
 
@@ -38,9 +38,9 @@ async function list(limit, token) {
   }
   const transactions = [];
   snapshot.forEach((doc) => {
-    let book = doc.data();
-    book.id = doc.id;
-    transactions.push(book);
+    let transaction = doc.data();
+    transaction.id = doc.id;
+    transactions.push(transaction);
   });
   const q = await snapshot.query.offset(limit).get();
 
@@ -50,7 +50,7 @@ async function list(limit, token) {
   };
 }
 
-// Creates a new book or updates an existing book with new data.
+// Creates a new transaction or updates an existing transaction with new data.
 async function update(id, data) {
   let ref;
   if (id === null) {
@@ -69,7 +69,7 @@ async function create(data) {
   return await update(null, data);
 }
 
-// [START hubble_firestore_client_get_book]
+// [START hubble_firestore_client_get_transaction]
 async function read(id) {
   const doc = await db.collection(collection).doc(id).get();
 
@@ -78,7 +78,7 @@ async function read(id) {
   }
   return doc.data();
 }
-// [END hubble_firestore_client_get_book]
+// [END hubble_firestore_client_get_transaction]
 
 async function _delete(id) {
   await db.collection(collection).doc(id).delete();
