@@ -20,13 +20,13 @@ const app = express();
 app.set('views', require('path').join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-// Books
-app.use('/books', require('./books/crud'));
-app.use('/api/books', require('./books/api'));
+// Transactions
+app.use('/transactions', require('./transactions/crud'));
+app.use('/api/transactions', require('./transactions/api'));
 
-// Redirect root to /books
+// Redirect root to /transactions
 app.get('/', (req, res) => {
-  res.redirect('/books');
+  res.redirect('/transactions');
 });
 
 app.get('/errors', () => {

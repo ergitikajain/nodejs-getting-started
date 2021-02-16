@@ -23,20 +23,20 @@ const router = express.Router();
 router.use(bodyParser.json());
 
 /**
- * GET /api/books
+ * GET /api/transactions
  *
- * Retrieve a page of books (up to ten at a time).
+ * Retrieve a page of transactions (up to ten at a time).
  */
 router.get('/', async (req, res) => {
-  const {books, nextPageToken} = await db.list(10, req.query.pageToken);
+  const {transactions, nextPageToken} = await db.list(10, req.query.pageToken);
   res.json({
-    items: books,
+    items: transactions,
     nextPageToken,
   });
 });
 
 /**
- * POST /api/books
+ * POST /api/transactions
  *
  * Create a new book.
  */
@@ -46,7 +46,7 @@ router.post('/', async (req, res) => {
 });
 
 /**
- * GET /api/books/:id
+ * GET /api/transactions/:id
  *
  * Retrieve a book.
  */
@@ -56,7 +56,7 @@ router.get('/:book', async (req, res) => {
 });
 
 /**
- * PUT /api/books/:id
+ * PUT /api/transactions/:id
  *
  * Update a book.
  */
@@ -66,7 +66,7 @@ router.put('/:book', async (req, res) => {
 });
 
 /**
- * DELETE /api/books/:id
+ * DELETE /api/transactions/:id
  *
  * Delete a book.
  */

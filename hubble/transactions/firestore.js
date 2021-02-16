@@ -21,7 +21,7 @@ const collection = 'Book';
 
 // [END hubble_firestore_client]
 
-// Lists all books in the database sorted alphabetically by title.
+// Lists all transactions in the database sorted alphabetically by title.
 async function list(limit, token) {
   const snapshot = await db
     .collection(collection)
@@ -32,21 +32,21 @@ async function list(limit, token) {
 
   if (snapshot.empty) {
     return {
-      books: [],
+      transactions: [],
       nextPageToken: false,
     };
   }
-  const books = [];
+  const transactions = [];
   snapshot.forEach((doc) => {
     let book = doc.data();
     book.id = doc.id;
-    books.push(book);
+    transactions.push(book);
   });
   const q = await snapshot.query.offset(limit).get();
 
   return {
-    books,
-    nextPageToken: q.empty ? false : books[books.length - 1].title,
+    transactions,
+    nextPageToken: q.empty ? false : transactions[transactions.length - 1].title,
   };
 }
 

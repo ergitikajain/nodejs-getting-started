@@ -30,32 +30,32 @@ router.use((req, res, next) => {
 });
 
 /**
- * GET /books
+ * GET /transactions
  *
- * Display a page of books (up to ten at a time).
+ * Display a page of transactions (up to ten at a time).
  */
 router.get('/', async (req, res) => {
-  let {books, nextPageToken} = await db.list(10, req.query.pageToken);
-  res.render('books/list.pug', {
-    books,
+  let {transactions, nextPageToken} = await db.list(10, req.query.pageToken);
+  res.render('transactions/list.pug', {
+    transactions,
     nextPageToken,
   });
 });
 
 /**
- * GET /books/add
+ * GET /transactions/add
  *
  * Display a form for creating a book.
  */
 router.get('/add', (req, res) => {
-  res.render('books/form.pug', {
+  res.render('transactions/form.pug', {
     book: {},
     action: 'Add',
   });
 });
 
 /**
- * POST /books/add
+ * POST /transactions/add
  *
  * Create a book.
  */
@@ -81,20 +81,20 @@ router.post(
 // [END add]
 
 /**
- * GET /books/:id/edit
+ * GET /transactions/:id/edit
  *
  * Display a book for editing.
  */
 router.get('/:book/edit', async (req, res) => {
   const book = await db.read(req.params.book);
-  res.render('books/form.pug', {
+  res.render('transactions/form.pug', {
     book,
     action: 'Edit',
   });
 });
 
 /**
- * POST /books/:id/edit
+ * POST /transactions/:id/edit
  *
  * Update a book.
  */
@@ -117,19 +117,19 @@ router.post(
 );
 
 /**
- * GET /books/:id
+ * GET /transactions/:id
  *
  * Display a book.
  */
 router.get('/:book', async (req, res) => {
   const book = await db.read(req.params.book);
-  res.render('books/view.pug', {
+  res.render('transactions/view.pug', {
     book,
   });
 });
 
 /**
- * GET /books/:id/delete
+ * GET /transactions/:id/delete
  *
  * Delete a book.
  */

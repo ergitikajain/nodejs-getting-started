@@ -6,11 +6,11 @@ describe('Requests have valid status codes', () => {
   it('should get 302', (done) => {
     request(app).get('/').expect(302, done);
   }),
-    it('should get books', (done) => {
-      request(app).get('/books').expect(200, done);
+    it('should get transactions', (done) => {
+      request(app).get('/transactions').expect(200, done);
     });
-  it('should get books/add form', (done) => {
-    request(app).get('/books/add').expect(200, done);
+  it('should get transactions/add form', (done) => {
+    request(app).get('/transactions/add').expect(200, done);
   });
 });
 
